@@ -34,6 +34,8 @@ object Config {
    */
   val DURATION = Integer.getInteger("duration", 60).toInt
   
+  
+  val REPEAT_COUNT = Integer.getInteger("repeatCount", 2).toInt
   /**
    * http protocol;
    */

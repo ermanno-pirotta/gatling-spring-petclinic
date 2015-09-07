@@ -4,7 +4,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 /**
- * Contains requests 
+ * Contains requests related to the owners' page.
  */
 object OwnerRequest {
   val ShowLanding= {

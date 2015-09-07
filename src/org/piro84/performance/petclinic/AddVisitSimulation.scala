@@ -15,19 +15,21 @@ class AddVisitSimulation extends Simulation {
 
     .pause(Config.THINK_TIME_DEFAULT_SECONDS)
 
-    .exec(OwnerRequest.ListAllByLastName)
+    .repeat(Config.REPEAT_COUNT) {
+      exec(OwnerRequest.ListAllByLastName)
 
-    .pause(Config.THINK_TIME_DEFAULT_SECONDS)
+        .pause(Config.THINK_TIME_DEFAULT_SECONDS)
 
-    .exec(OwnerRequest.GetRandomOwner)
+        .exec(OwnerRequest.GetRandomOwner)
 
-    .pause(Config.THINK_TIME_DEFAULT_SECONDS)
+        .pause(Config.THINK_TIME_DEFAULT_SECONDS)
 
-    .exec(VisitRequest.NavigateToNewVisitForm)
+        .exec(VisitRequest.NavigateToNewVisitForm)
 
-    .pause(Config.THINK_TIME_DEFAULT_SECONDS)
+        .pause(Config.THINK_TIME_DEFAULT_SECONDS)
 
-    .exec(VisitRequest.AddNewVisit)
+        .exec(VisitRequest.AddNewVisit)
+    }
 
   setUp(scn.inject(constantUsersPerSec(Config.USER_PER_SEC) during (Config.DURATION seconds)))
     .protocols(Config.HTTP_PROTOCOL)
