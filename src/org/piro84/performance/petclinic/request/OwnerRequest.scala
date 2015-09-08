@@ -13,6 +13,10 @@ object OwnerRequest {
     css("table[id='owners'] a", "href").findAll.transform(RequestUtils.random).saveAs("ownerLink")
   }
   
+   def randomVisitForm(): HttpCheck = {
+    css("a[href$='/visits/new']", "href").findAll.transform(RequestUtils.random).saveAs("visitLink")
+  }
+   
   val ShowLanding= {
     exec(http("Navigate to owners page")
       .get("/petclinic/owners/find.html"))
@@ -27,7 +31,8 @@ object OwnerRequest {
   
   val GetRandomOwner = {
 		  exec(http("Get a random owner")
-				  .get("${ownerLink}"))
+				  .get("${ownerLink}")
+          .check(randomVisitForm))
           
   }
 }
